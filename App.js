@@ -1,7 +1,6 @@
 import React from 'react'
 import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
-import Home from './Screens/Home'
 import Navigation from './Components/stackNavigation/Navigation';
 
 const App = () => {

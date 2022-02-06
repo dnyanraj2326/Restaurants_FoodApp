@@ -20,7 +20,7 @@ export const localRestaurants = [
       name: "Benihana",
       image_url:
         "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
-      categories: ["Cafe", "Bar"],
+      categories: ["Aus-Cafe", "Bar"],
       price: "$$",
       reviews: 1244,
       rating: 3.7,
@@ -30,7 +30,7 @@ export const localRestaurants = [
       name: "India's Grill",
       image_url:
         "https://images.unsplash.com/photo-1596561260970-66b073f956a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODh8fHJlc3RhdXJhbnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-      categories: ["Indian", "Bar"],
+      categories: ["Indian-Cafe", "Bar"],
       price: "$$",
       reviews: 700,
       rating: 4.9,
@@ -40,7 +40,7 @@ export const localRestaurants = [
         name: "Authantic Ambersariya",
         image_url:
           "https://images.unsplash.com/photo-1600353565737-2427a1ba3d3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fGNhZmV8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-        categories: ["Indian", "Bar"],
+        categories: ["Indian-Hotel", "Bar"],
         price: "$$",
         reviews: 700,
         rating: 4.2,
@@ -51,7 +51,7 @@ export const localRestaurants = [
         name: "Petter cafe",
         image_url:
           "https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2FmZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-        categories: ["Indian", "Bar"],
+        categories: ["Indian-Bar", "Bar"],
         price: "$$",
         reviews: 700,
         rating: 4.6,
@@ -64,7 +64,7 @@ const RestaurantItems = () => {
   const navigation = useNavigation();
 
     return (
-        <TouchableOpacity activeOpacity={1} style={{ marginBottom: 30 }}>
+        <TouchableOpacity activeOpacity={0.1} style={{ marginBottom: 30 }}>
             {localRestaurants.map((restaurant,index) => (
               <TouchableOpacity onPress={() => navigation.push('About', {
                 image: restaurant.image_url,
@@ -72,7 +72,7 @@ const RestaurantItems = () => {
                 price: restaurant.price,
                 categories: restaurant.categories,
                 rating: restaurant.rating,
-                description:restaurant.description
+                reviews:restaurant.reviews
                 })} key={index}
                     style={{ padding: 15, backgroundColor: '#fff', marginTop: 10 }}>
                 <RestaurantImage image={restaurant.image_url} />
