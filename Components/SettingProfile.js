@@ -5,7 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const Payment = () => {
+const SettingProfile = () => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View>
@@ -14,7 +14,7 @@ const Payment = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert('Payment has been closed.');
+          Alert.alert('SettingProfile has been closed.');
           setModalVisible(!modalVisible);
         }}>
         <View
@@ -22,36 +22,42 @@ const Payment = () => {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: 140,
+            marginTop: 80,
           }}>
           <View
             style={{
               margin: 0,
               backgroundColor: '#F7F7F7',
-              borderRadius: 20,
+              borderRadius: 40,
               paddingHorizontal: 0,
               paddingVertical: 15,
               width: '100%',
-              height: '60%',
+              height: '100%',
               alignItems: 'center',
             }}>
-            <View style={{marginTop: 10, width: '90%'}}>
+            <View style={{width: '90%'}}>
+            <View style={{paddingBottom:30,paddingTop:10,flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
+                <Text style={{fontSize:20,color:'#000',fontWeight:'bold'}}>Setting</Text>
+                <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
+                    <Ionicons name={'close'} size={25} color={'#000'} />
+                </TouchableOpacity>
+            </View>
               <View
                 style={{
                   flexDirection: 'row',
                   backgroundColor: '#fff',
                   paddingHorizontal: 20,
-                  paddingVertical: 10,
+                  paddingVertical: 15,
                   borderRadius: 10,
                   alignItems: 'center',
                 }}>
                 <View style={{paddingRight: 15}}>
-                  <Foundation name={'dollar'} size={27} color={'orange'} />
+                  <Ionicons name={'information-circle'} size={27} color={'orange'} />
                 </View>
                 <View>
                   <Text
                     style={{color: 'gray', fontSize: 15, fontWeight: 'bold'}}>
-                    Cash
+                    Change Information
                   </Text>
                 </View>
               </View>
@@ -60,18 +66,18 @@ const Payment = () => {
                   flexDirection: 'row',
                   backgroundColor: '#fff',
                   paddingHorizontal: 20,
-                  paddingVertical: 10,
+                  paddingVertical: 15,
                   borderRadius: 10,
-                  marginTop: 15,
+                  marginTop: 20,
                   alignItems: 'center',
                 }}>
                 <View style={{paddingRight: 15}}>
-                  <Ionicons name={'wallet'} size={27} color={'orange'} />
+                  <MaterialCommunityIcons name={'lock'} size={27} color={'orange'} />
                 </View>
                 <View>
                   <Text
                     style={{color: 'gray', fontSize: 15, fontWeight: 'bold'}}>
-                    Digital Wallet
+                    Change Password
                   </Text>
                 </View>
               </View>
@@ -80,14 +86,14 @@ const Payment = () => {
                   flexDirection: 'row',
                   backgroundColor: '#fff',
                   paddingHorizontal: 20,
-                  paddingVertical: 10,
+                  paddingVertical: 15,
                   borderRadius: 10,
-                  marginTop: 15,
+                  marginTop: 20,
                   alignItems: 'center',
                 }}>
                 <View style={{paddingRight: 15}}>
-                  <MaterialCommunityIcons
-                    name={'wallet-giftcard'}
+                  <Ionicons
+                    name={'location'}
                     size={27}
                     color={'orange'}
                   />
@@ -95,7 +101,7 @@ const Payment = () => {
                 <View>
                   <Text
                     style={{color: 'gray', fontSize: 15, fontWeight: 'bold'}}>
-                    Das'Min Wallet
+                    Your location
                   </Text>
                 </View>
               </View>
@@ -104,18 +110,18 @@ const Payment = () => {
                   flexDirection: 'row',
                   backgroundColor: '#fff',
                   paddingHorizontal: 20,
-                  paddingVertical: 10,
+                  paddingVertical: 15,
                   borderRadius: 10,
-                  marginTop: 15,
+                  marginTop: 20,
                   alignItems: 'center',
                 }}>
                 <View style={{paddingRight: 15}}>
-                  <Ionicons name={'card'} size={27} color={'orange'} />
+                  <Entypo name={'users'} size={27} color={'orange'} />
                 </View>
                 <View>
                   <Text
                     style={{color: 'gray', fontSize: 15, fontWeight: 'bold'}}>
-                    Atm Card
+                    Invite Friends
                   </Text>
                 </View>
               </View>
@@ -124,63 +130,55 @@ const Payment = () => {
                   flexDirection: 'row',
                   backgroundColor: '#fff',
                   paddingHorizontal: 20,
-                  paddingVertical: 10,
+                  paddingVertical: 15,
                   borderRadius: 10,
-                  marginTop: 15,
+                  marginTop: 20,
                   alignItems: 'center',
                   marginBottom: 20,
                 }}>
                 <View style={{paddingRight: 15}}>
-                  <Entypo name={'credit-card'} size={27} color={'orange'} />
+                  <Foundation name={'page-copy'} size={27} color={'orange'} />
                 </View>
                 <View>
                   <Text
                     style={{color: 'gray', fontSize: 15, fontWeight: 'bold'}}>
-                    Credit Card
+                    Policy Provision
                   </Text>
                 </View>
               </View>
             </View>
+            <View style={{paddingTop:20}}>
+                <Text style={{textAlign:'center'}}>Version 2.1</Text>
+                <Text style={{textAlign:'center',paddingTop:1}}>UberEats Pvt</Text>
+            </View>
             <TouchableOpacity
               style={{
-                borderRadius: 20,
+                borderRadius: 25,
                 padding: 10,
                 elevation: 2,
                 backgroundColor: '#2196F3',
+                marginTop:30
               }}
-              onPress={() => setModalVisible(!modalVisible)}>
+              >
               <Text
                 style={{
                   color: 'white',
                   fontWeight: 'bold',
                   textAlign: 'center',
-                  paddingHorizontal: 20,
+                  paddingHorizontal: 60,
+                  paddingVertical:5
                 }}>
-                Close
+                LOG OUT
               </Text>
             </TouchableOpacity>
           </View>
         </View>
       </Modal>
-      <TouchableOpacity
-        onPress={() => setModalVisible(true)}
-        style={{
-          backgroundColor: '#eee',
-          paddingVertical: 20,
-          borderRadius: 30,
-        }}>
-        <Text
-          style={{
-            paddingLeft: 20,
-            fontSize: 15,
-            fontWeight: 'bold',
-            color: 'black',
-          }}>
-          PAYMENT
-        </Text>
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+        <Ionicons name={'settings-sharp'} size={22} color={'black'} />
       </TouchableOpacity>
     </View>
   );
 };
 
-export default Payment;
+export default SettingProfile;

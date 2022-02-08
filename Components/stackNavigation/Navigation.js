@@ -7,6 +7,10 @@ import Splash from '../../Screens/Splash';
 import UserProfile from '../../Screens/UserProfile';
 import Signup from '../../Screens/Signup';
 import Cart from '../../Screens/Cart';
+import PaymentSuccesful from '../../Screens/PaymentSuccesful';
+import ForgotPassword from '../../Screens/ForgotPassword';
+import ForgotPassOtp from '../../Screens/ForgotPassOtp';
+import ForgotNewPass from '../../Screens/ForgotNewPass';
 
 
 
@@ -25,6 +29,11 @@ const Navigation = () => {
         <Stack.Screen name="UserProfile" component={UserProfile} options={{headerShown:false}} />
         <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}} />
         <Stack.Screen name="Cart" component={Cart} options={{headerShown:false}} />
+        <Stack.Screen name="PaymentSuccesful" component={PaymentSuccesful} options={{headerShown:false}} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{headerShown:false}} />
+        <Stack.Screen name="ForgotPassOtp" component={ForgotPassOtp} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgotNewPass" component={ForgotNewPass} options={{headerShown:false}} />
+      
       </Stack.Navigator>
   );
 };
