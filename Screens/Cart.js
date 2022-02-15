@@ -5,10 +5,36 @@ import {
   StatusBar,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import LottieView from 'lottie-react-native';
+import React, {useState, useEffect} from 'react';
 import CartCard from '../Components/CartCard';
+import {connect} from 'react-redux';
 
-const Cart = ({navigation}) => {
+const Cart = ({navigation, cart}) => {
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    let price = 0;
+    let items = 0;
+
+    cart.forEach(item => {
+      (items += item.qty), (price += items * item.price);
+    });
+    setTotalPrice(price);
+    setTotalItems(items);
+  }, [cart, totalItems, totalPrice, setTotalItems, setTotalPrice]);
+
+  let shippingCharges = 20;
+  let allIncPrice = totalPrice + shippingCharges;
+
+  // if (cart.length > 0) {
+  //   var shippingCharges = 20;
+  //   var allIncPrice = totalPrice + shippingCharges;
+  // } else {
+  //   var allIncPrice = 0;
+  // }
+
   return (
     <View
       style={{
@@ -33,7 +59,31 @@ const Cart = ({navigation}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={{height: '60%'}}>
-          <CartCard />
+          {cart.length > 0 ? (
+            <View>
+              {cart.map((item, ind) => (
+                <CartCard key={ind} itemData={item} />
+              ))}
+            </View>
+          ) : (
+            <View style={{paddingTop: 90}}>
+              <Text style={{textAlign: 'center', fontSize: 20, color: 'green'}}>
+                No items in your cart !
+              </Text>
+              <View
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: 20,
+                }}>
+                <LottieView
+                  source={require('../assets/icon/17100-food.json')}
+                  autoPlay
+                  style={{height: 300, width: 300}}
+                />
+              </View>
+            </View>
+          )}
         </ScrollView>
       </View>
       <View
@@ -45,7 +95,7 @@ const Cart = ({navigation}) => {
         }}>
         <View style={{paddingHorizontal: 35, paddingTop: 15}}>
           <Text style={{fontSize: 17, fontWeight: 'bold', color: '#000'}}>
-            3 Items in cart
+            ({totalItems}) Items in cart
           </Text>
           <View>
             <View
@@ -60,7 +110,7 @@ const Cart = ({navigation}) => {
               <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
                 Sub Total
               </Text>
-              <Text style={{color: '#000'}}>$ 390.00</Text>
+              <Text style={{color: '#000'}}>${totalPrice}</Text>
             </View>
             <View
               style={{
@@ -74,7 +124,9 @@ const Cart = ({navigation}) => {
               <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
                 Shiping
               </Text>
-              <Text style={{color: '#000'}}>$ 20.00</Text>
+              <Text style={{color: '#000'}}>
+                ${cart.length > 0 ? shippingCharges : '$0'}
+              </Text>
             </View>
             <View
               style={{
@@ -86,10 +138,13 @@ const Cart = ({navigation}) => {
               <Text style={{fontSize: 15, fontWeight: 'bold', color: '#000'}}>
                 Total
               </Text>
-              <Text style={{color: '#000', fontWeight: 'bold'}}>$ 370.00</Text>
+              <Text style={{color: '#000', fontWeight: 'bold'}}>
+                ${cart.length > 0 ? allIncPrice : '$00'}
+              </Text>
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate("PaymentSuccesful")}
+          <TouchableOpacity
+            onPress={() => navigation.navigate('PaymentSuccesful')}
             style={{
               paddingHorizontal: 30,
               paddingVertical: 15,
@@ -112,5 +167,10 @@ const Cart = ({navigation}) => {
     </View>
   );
 };
+const mapStateToProps = state => {
+  return {
+    cart: state.order.cart,
+  };
+};
 
-export default Cart;
+export default connect(mapStateToProps)(Cart);

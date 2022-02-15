@@ -6,20 +6,28 @@ import {
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MenuItems from '../Components/MenuItems';
 import RecommendedItems from '../Components/RecommendedItems';
+import {connect} from 'react-redux';
 
-const About = ({route, navigation}) => {
-  const [like, setLike] = useState();
+const About = ({route, navigation, products, cart}) => {
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+    let count = 0;
+    cart.forEach(item => {
+      count += item.qty;
+    });
+    setCartCount(count);
+  }, [cart, cartCount]);
   const {image, name, price, categories, rating, reviews} = route.params;
 
   return (
     <View style={{flex: 1, backgroundColor: '#fff'}}>
       <StatusBar translucent backgroundColor="transparent" />
       <View>
-        <Image source={{uri: image}} style={{width: '100%', height: 200,}} />
+        <Image source={{uri: image}} style={{width: '100%', height: 200}} />
       </View>
       <View
         style={{
@@ -53,7 +61,9 @@ const About = ({route, navigation}) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{position: 'relative'}}>
-        <MenuItems />
+        {products.map((food, index) => (
+          <MenuItems key={index} foodItems={food} />
+        ))}
         <RecommendedItems />
       </ScrollView>
       <View
@@ -87,7 +97,7 @@ const About = ({route, navigation}) => {
               fontWeight: 'bold',
               fontSize: 17,
             }}>
-            $405
+            {cartCount}
           </Text>
         </TouchableOpacity>
       </View>
@@ -95,4 +105,11 @@ const About = ({route, navigation}) => {
   );
 };
 
-export default About;
+const mapStateToProps = state => {
+  return {
+    products: state.order.products,
+    cart: state.order.cart,
+  };
+};
+
+export default connect(mapStateToProps)(About);

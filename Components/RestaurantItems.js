@@ -62,12 +62,12 @@ export const localRestaurants = [
   },
 ];
 
-const RestaurantItems = () => {
+const RestaurantItems = (props) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity activeOpacity={0.1} style={{marginBottom: 30}}>
-      {localRestaurants.map((restaurant, index) => (
+      {props.restaurantdata.map((restaurant, index) => (
         <TouchableOpacity
           onPress={() =>
             navigation.push('About', {
