@@ -19,8 +19,8 @@ const Home = () => {
   //   }
 
   //   return fetch(yelpUrl, apiOptions)
-  //     .then((res) => res.json())
-  //     .then((json) => setRestaurantData(json.businesses))
+  //   .then((res) => res.json())
+  //   .then((json) => setRestaurantData(json.businesses))
   // };
 
   // useEffect(() => {

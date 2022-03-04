@@ -9,8 +9,10 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Login = ({navigation}) => {
+const Login = ({navigation,...signup}) => {
   const [hidePass, setHidePass] = useState(true);
+
+  console.log(signup.username);
   return (
     <View style={styles.container}>
       <View
@@ -69,7 +71,7 @@ const Login = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.skip}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity onPress={() => navigation.navigate('LocationScreen')}>
           <Text style={styles.forgotText}>Skip Now</Text>
         </TouchableOpacity>
       </View>

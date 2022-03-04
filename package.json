@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
+    "firebase": "^9.6.6",
     "lottie-react-native": "^5.0.1",
     "react": "17.0.2",
     "react-native": "0.66.4",
@@ -20,6 +21,7 @@
     "react-native-screens": "^3.10.2",
     "react-native-vector-icons": "^9.0.0",
     "react-redux": "^7.2.6",
+    "realm": "^10.13.0",
     "redux": "^4.1.2"
   },
   "devDependencies": {

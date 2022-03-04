@@ -159,7 +159,7 @@ const Cart = ({navigation, cart}) => {
                 color: '#fff',
                 textAlign: 'center',
               }}>
-              Order Now
+              {cart.length > 0 ? "Order Now" : "Add Some Items"}
             </Text>
           </TouchableOpacity>
         </View>

@@ -11,7 +11,7 @@ import PaymentSuccesful from '../../Screens/PaymentSuccesful';
 import ForgotPassword from '../../Screens/ForgotPassword';
 import ForgotPassOtp from '../../Screens/ForgotPassOtp';
 import ForgotNewPass from '../../Screens/ForgotNewPass';
-
+import LocationScreen from '../../Database/LocationScreen'
 
 
 
@@ -33,7 +33,7 @@ const Navigation = () => {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{headerShown:false}} />
         <Stack.Screen name="ForgotPassOtp" component={ForgotPassOtp} options={{ headerShown: false }} />
         <Stack.Screen name="ForgotNewPass" component={ForgotNewPass} options={{headerShown:false}} />
-      
+        <Stack.Screen name="LocationScreen" component={LocationScreen} options={{headerShown:false}} />
       </Stack.Navigator>
   );
 };
